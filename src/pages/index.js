@@ -55,7 +55,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allContentfulPerson(filter: { id: { eq: "c15jwOBqpxqSAOy2eOO4S0m" } }) {
+    allContentfulPerson(filter: { id: { eq: "c5Daj5jdw0CKr2u2koWLsv5" } }) {
       edges {
         node {
           name
@@ -74,6 +74,11 @@ export const pageQuery = graphql`
             }
           }
         }
+      }
+    }
+    site {
+      siteMetadata {
+        title
       }
     }
   }

@@ -20,6 +20,9 @@ if (!spaceId || !accessToken) {
 }
 
 module.exports = {
+  siteMetadata: {
+    title: `Elliot Pinson Racing`,
+  },
   pathPrefix: '/gatsby-contentful-starter',
   plugins: [
     'gatsby-transformer-remark',
