@@ -9,10 +9,16 @@ export default () => (
         <Link to="/">Home</Link>
       </li>
       <li className={styles.navigationItem}>
-        <Link to="/blog/">Blog</Link>
+        <Link to="/blog/">News</Link>
+      </li>
+      <li className={styles.navigationItem}>
+        <Link to="/sponsors/">History</Link>
       </li>
       <li className={styles.navigationItem}>
         <Link to="/sponsors/">Sponsors</Link>
+      </li>
+      <li className={styles.navigationItem}>
+        <Link to="/sponsors/">Contact</Link>
       </li>
     </ul>
   </nav>
