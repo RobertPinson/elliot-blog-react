@@ -10,7 +10,7 @@ export default ({ eventPost }) => (
     <h3 className={eventPost.previewTitle}>
       <Link to={`/event/${eventPost.slug}`}>{eventPost.title}</Link>
     </h3>
-    <small>{eventPost.date}</small>
+    <small>{eventPost.eventDate}</small>
     <p
       dangerouslySetInnerHTML={{        
         __html: `PREVIEW ${eventPost.description.childMarkdownRemark.html}`,

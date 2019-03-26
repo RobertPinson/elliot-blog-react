@@ -71,7 +71,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allContentfulEvent(sort: { fields: [eventDate], order: DESC }) {
+    allContentfulEvent(sort: { fields: [eventDate], order: ASC }) {
       edges {
         node {
           title
