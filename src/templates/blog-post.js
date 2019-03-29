@@ -15,7 +15,14 @@ class BlogPostTemplate extends React.Component {
     return (
       <Layout>
         <div style={{ background: "#fff" }}>
-          <Helmet title={`${post.title} | ${siteTitle}`} />
+          <Helmet title={`${post.title} | ${siteTitle}`} />         
+          <div className={heroStyles.hero}>
+            <Img
+              className={heroStyles.heroImage}
+              alt={post.title}
+              sizes={post.heroImage.sizes}
+            />
+          </div>
           <Share>
             <ShareLabel>Share this post</ShareLabel>
             <ShareSocial>
@@ -102,13 +109,6 @@ class BlogPostTemplate extends React.Component {
               </ShareItem>
             </ShareSocial>
           </Share>
-          <div className={heroStyles.hero}>
-            <Img
-              className={heroStyles.heroImage}
-              alt={post.title}
-              sizes={post.heroImage.sizes}
-            />
-          </div>
           <div className="wrapper">
             <h1 className="section-headline">{post.title}</h1>
             <p
