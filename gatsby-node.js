@@ -46,7 +46,8 @@ exports.createPages = ({
             path: `/blog/${post.node.slug}/`,
             component: blogPost,
             context: {
-              slug: post.node.slug
+              slug: post.node.slug,
+              path: `/blog/${post.node.slug}/`
             },
           })
         })
@@ -57,7 +58,8 @@ exports.createPages = ({
             path: `/event/${event.node.slug}/`,
             component: eventPost,
             context: {
-              slug: event.node.slug
+              slug: event.node.slug,
+              path: `/event/${event.node.slug}/`,
             },
           })
         })

@@ -1,53 +1,54 @@
-import React from 'react'
-import get from 'lodash/get'
-import Helmet from 'react-helmet'
-import Hero from '../components/hero'
-import ArticlePreview from '../components/article-preview'
-import EventPreview from '../components/event-preview';
+import React from "react";
+import get from "lodash/get";
+import Helmet from "react-helmet";
+import Hero from "../components/hero";
+import ArticlePreview from "../components/article-preview";
+import EventPreview from "../components/event-preview";
+import Layout from "../components/layout";
 
 class RootIndex extends React.Component {
   render() {
-    const siteTitle = get(this, 'props.data.site.siteMetadata.title')
-    const posts = get(this, 'props.data.allContentfulBlogPost.edges')
-    const events = get(this, 'props.data.allContentfulEvent.edges')
-    const [author] = get(this, 'props.data.allContentfulPerson.edges')
-
-    events.map(({node}) => { console.log(node.slug)});
+    const siteTitle = get(this, "props.data.site.siteMetadata.title");
+    const posts = get(this, "props.data.allContentfulBlogPost.edges");
+    const events = get(this, "props.data.allContentfulEvent.edges");
+    const [author] = get(this, "props.data.allContentfulPerson.edges");
 
     return (
-      <div style={{ background: '#fff' }}>
-        <Helmet title={siteTitle} />
-        <Hero data={author.node} />
-        <div className="wrapper">
-        <h2 className="section-headline">Comming Events</h2>
-        <ul className="article-list">
-        {events.map(({ node }) => {
-          return (
-            <li key={node.slug}>
-            <EventPreview eventPost={node} />
-            </li>
-          )
-        })}
-        </ul>
+      <Layout location={this.props.location}>
+        <div style={{ background: "#fff" }}>
+          <Helmet title={siteTitle} />
+          <Hero data={author.node} />
+          <div className="wrapper">
+            <h2 className="section-headline">Coming Events</h2>
+            <ul className="article-list">
+              {events.map(({ node }) => {
+                return (
+                  <li key={node.slug}>
+                    <EventPreview eventPost={node} />
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+          <div className="wrapper">
+            <h2 className="section-headline">Recent articles</h2>
+            <ul className="article-list">
+              {posts.map(({ node }) => {
+                return (
+                  <li key={node.slug}>
+                    <ArticlePreview article={node} />
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         </div>
-        <div className="wrapper">
-          <h2 className="section-headline">Recent articles</h2>
-          <ul className="article-list">
-            {posts.map(({ node }) => {
-              return (
-                <li key={node.slug}>
-                  <ArticlePreview article={node} />
-                </li>
-              )
-            })}
-          </ul>
-        </div>
-      </div>
-    )
+      </Layout>
+    );
   }
 }
 
-export default RootIndex
+export default RootIndex;
 
 export const pageQuery = graphql`
   query HomeQuery {
@@ -60,7 +61,7 @@ export const pageQuery = graphql`
           tags
           heroImage {
             sizes(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
-             ...GatsbyContentfulSizes_withWebp
+              ...GatsbyContentfulSizes_withWebp
             }
           }
           description {
@@ -80,7 +81,7 @@ export const pageQuery = graphql`
           tags
           heroImage {
             sizes(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
-             ...GatsbyContentfulSizes_withWebp
+              ...GatsbyContentfulSizes_withWebp
             }
           }
           description {
@@ -91,7 +92,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allContentfulPerson(filter: { id: { eq: "c5Daj5jdw0CKr2u2koWLsv5" } }) {
+    allContentfulPerson(filter: {name: {eq: "Elliot Pinson"}}) {
       edges {
         node {
           name
@@ -118,4 +119,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

@@ -4,6 +4,7 @@ import get from 'lodash/get'
 import Helmet from 'react-helmet'
 import styles from './blog.module.css'
 import ArticlePreview from '../components/article-preview'
+import Layout from '../components/layout'
 
 class BlogIndex extends React.Component {
   render() {
@@ -11,6 +12,7 @@ class BlogIndex extends React.Component {
     const posts = get(this, 'props.data.allContentfulBlogPost.edges')
 
     return (
+      <Layout location={this.props.location}>
       <div style={{ background: '#fff' }}>
         <Helmet title={siteTitle} />
         <div className={styles.hero}>
@@ -29,6 +31,7 @@ class BlogIndex extends React.Component {
           </ul>
         </div>
       </div>
+      </Layout>      
     )
   }
 }
